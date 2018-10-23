@@ -1,4 +1,4 @@
-#THIS CODE IS CURRENTLY UNDER DEVELOPMENT AND IS UPDATED REGULARLY.
+# THIS CODE IS CURRENTLY UNDER DEVELOPMENT AND IS UPDATED REGULARLY.
 # This is a search engine under development.
 # THE FOLLOWING IS A LOG OF UPDATES:
 # 10-19-18: revised crawl_web to include indexing capability
