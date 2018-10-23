@@ -15,9 +15,9 @@ Month31 = [1, 3, 5, 7, 8, 10, 12]
 def isLeapYear(year):
     if year%400 == 0:
         return True
-    elif year%100 ==0:
+    elif year%100 == 0:
         return False
-    elif year%4 ==0:
+    elif year%4 == 0:
         return True
     else:
         return False
