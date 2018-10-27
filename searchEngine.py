@@ -1,7 +1,8 @@
 # THIS CODE IS CURRENTLY UNDER DEVELOPMENT AND IS UPDATED REGULARLY.
 # This is a search engine under development.
 # THE FOLLOWING IS A LOG OF UPDATES:
-# 10-23-18: defined get_page using urllib library
+# 10-24-18: reverted add_to_index and lookup() and impoved add_to_index by removing duplicate URLs
+# 10-23-18: defined get_page using urllib library, edited def add_to_index to increase speed, edited lookup (decreases speed)
 # 10-19-18: revised crawl_web to include indexing capability
 # 10-18-18: defined add_page_to_index, which breaks page content into keywords, then calls add_to_index
 # 10-14-18: added indexing/keyword association capability via add_to_index, also defined lookup function
@@ -45,7 +46,8 @@ def get_all_links(page):
 def add_to_index(index, keyword, url):
     for entry in index:
         if entry[0] == keyword:
-            entry[1].append(url)
+        	if not url in entry[1]:
+            	entry[1].append(url)
             return
     index.append([keyword, [url]])
 
@@ -54,6 +56,20 @@ def lookup(index, keyword):
         if entry[0] == keyword:
             return entry[1]
     return []
+
+def split_string(source, splitlist):
+    output = []
+    atsplit = True
+    for char in source:
+        if char in splitlist:
+            atsplit = True
+        else:
+            if atsplit:
+                output.append(char)
+                atsplit = False
+            else:
+                output[-1] += char
+    return output
 
 def add_page_to_index(index, url, content):
     words = content.split()
